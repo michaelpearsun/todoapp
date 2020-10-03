@@ -1,4 +1,5 @@
 //import { v4 as uuidv4 } from 'uuid';
+import * as ActionTypes from './ActionTypes';
 
 export const initialState = {
     todos: [
@@ -21,5 +22,12 @@ export const initialState = {
 };
 
 export const Reducer = (state = initialState, action) => {
+  console.log("hello", action)
+  switch(action.type) {
+    case ActionTypes.ADD_TODO:
+      console.log({...state, todos: [...state.todos, action.payload]})
+      return {...state, todos: [...state.todos, action.payload]}
+  }
+    
     return state;
 };

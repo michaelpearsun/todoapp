@@ -9,6 +9,7 @@ import { ConfigureStore } from './redux/configureStore';
 //import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
 import './App.css';
+import { addTodo } from './redux/ActionCreators';
 
 const store = ConfigureStore();
 
@@ -51,7 +52,7 @@ class App extends Component {
               <Header />
               <Route exact path="/" render={props => (
                 <React.Fragment>
-                  <AddTodo addTodo={this.addTodo} />
+                  <AddTodo addTodo={this.props.addTodo} />
                   <Todos todos={this.props.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
                 </React.Fragment>
               )} />
@@ -69,5 +70,8 @@ const mapStateToProps = (state) => {
     todos: state.todos
   }
 }
+const mapDispatchToProps = {
+  addTodo: () => (addTodo())
+}
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
