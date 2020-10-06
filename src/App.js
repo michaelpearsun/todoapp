@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  addTodo: () => (addTodo())
+  addTodo: (todos) => (addTodo(todos))
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
